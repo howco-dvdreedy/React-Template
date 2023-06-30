@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { Spinner } from '@chakra-ui/react';
 
 import { MainLayout } from '@/components/layout/MainLayout';
-
+import { PlanBuilderRoutes } from '@/features/plan-builder';
 
 // import { lazyImport } from '@/utils/lazyImport';
 
@@ -39,7 +39,7 @@ export const protectedRoutes = [
       { path: '/sales-orders', element: <div>sales - orders - page</div> },
       { path: '/work-center', element: <div>work - center - page</div> },
       { path: '/scheduler', element: <div>scheduler - page</div> },
-      { path: '/plan-builder', element: <div>plan builder</div> },
+      { path: '/plan-builder', element: <PlanBuilderRoutes></PlanBuilderRoutes> },
       { path: '*', element: <Navigate to="." /> },
     ],
   },

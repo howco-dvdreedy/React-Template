@@ -26,29 +26,16 @@ interface LinkItemProps {
 const LinkItems: Array<LinkItemProps> = [
    { name: 'Home', to: '/', icon: FiHome },
    { name: 'Sales Orders', to: '/sales-orders', icon: FiBookOpen },
-   { name: 'Shop Plan Builder', to: '/shop-plan-builder', icon: FiLayout },
+   { name: 'Shop Plan Builder', to: '/plan-builder', icon: FiLayout },
    { name: 'Scheduler', to: '/scheduler', icon: FiCalendar },
    { name: 'Work Center', to: '/work-center', icon: LuHardHat },
 ];
 
 export default function SideNav({ children }: { children: ReactNode }) {
-   const { isOpen, onOpen, onClose } = useDisclosure();
+   const { onClose } = useDisclosure();
    return (
       <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
          <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
-         <Drawer
-            autoFocus={false}
-            isOpen={isOpen}
-            placement="left"
-            onClose={onClose}
-            returnFocusOnClose={false}
-            onOverlayClick={onClose}
-            size="full"
-         >
-            <DrawerContent>
-               <SidebarContent onClose={onClose} />
-            </DrawerContent>
-         </Drawer>
          <Box ml={{ base: 0, md: 60 }} p="4">
             {children}
          </Box>
@@ -67,7 +54,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
          borderRight="1px"
          borderRightColor={useColorModeValue('gray.200', 'gray.700')}
          w={{ base: 'full', md: 60 }}
-         pos="fixed"
+         pos="relative"
          h="full"
          {...rest}
       >

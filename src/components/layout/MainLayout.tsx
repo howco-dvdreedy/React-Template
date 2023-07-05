@@ -11,7 +11,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
    return (
       <>
       <AppBar></AppBar>
-         <SideNav>
+         <SideNav>                                                                                                                                                                                                                                                                                                                                                 
             <Center>{children}</Center>
          </SideNav>
       </>

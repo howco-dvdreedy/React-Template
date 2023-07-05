@@ -12,6 +12,7 @@ import {
    useDisclosure,
    BoxProps,
    FlexProps,
+   Center,
 } from '@chakra-ui/react';
 
 import { FiHome, FiCalendar, FiBookOpen, FiLayout } from 'react-icons/fi';
@@ -34,11 +35,13 @@ const LinkItems: Array<LinkItemProps> = [
 export default function SideNav({ children }: { children: ReactNode }) {
    const { onClose } = useDisclosure();
    return (
-      <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-         <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
-         <Box ml={{ base: 0, md: 60 }} p="4">
-            {children}
-         </Box>
+      <Box h="100%" bg={useColorModeValue('gray.100', 'gray.900')}>
+         <Flex>
+            <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
+            <Box backgroundColor={'cyan.100'} w="100%">
+               {children}
+            </Box>
+         </Flex>
       </Box>
    );
 }
@@ -53,7 +56,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
          bg={useColorModeValue('white', 'gray.900')}
          borderRight="1px"
          borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-         w={{ base: 'full', md: 60 }}
+         w="10%"
          pos="relative"
          h="full"
          {...rest}
@@ -75,7 +78,7 @@ interface NavItemProps extends FlexProps {
 const NavItem = ({ icon, path, children, ...rest }: NavItemProps) => {
    return (
       <Link href={path} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
-         <Flex
+         <Box
             align="center"
             p="4"
             mx="4"
@@ -90,7 +93,6 @@ const NavItem = ({ icon, path, children, ...rest }: NavItemProps) => {
          >
             {icon && (
                <Icon
-                  mr="4"
                   fontSize="16"
                   _groupHover={{
                      color: 'white',
@@ -98,8 +100,8 @@ const NavItem = ({ icon, path, children, ...rest }: NavItemProps) => {
                   as={icon}
                />
             )}
-            {children}
-         </Flex>
+            <Text fontSize="sm">{children}</Text>
+         </Box>
       </Link>
    );
 };

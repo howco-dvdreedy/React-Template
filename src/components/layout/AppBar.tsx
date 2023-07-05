@@ -29,7 +29,7 @@ export default function AppBar() {
          <Flex
             bg={useColorModeValue('white', 'gray.800')}
             color={useColorModeValue('gray.600', 'white')}
-            minH={'50px'}
+            h={'75px'}
             py={{ base: 2 }}
             px={{ base: 4 }}
             borderBottom={1}
@@ -40,10 +40,10 @@ export default function AppBar() {
          >
             <Flex justify={{ base: 'center', md: 'start' }}>
                <Center boxSize="100px">
-                  <Image objectFit="contain" objectPosition="50% 50%" src={logo} alt="Howco Logo" />
+                  <Image w={50} h={50}  objectFit="contain" objectPosition="50% 50%" src={logo} alt="Howco Logo" />
                </Center>
             </Flex>
-            <Text>{title}</Text>            
+            <Text fontSize='4xl'>{title}</Text>            
             <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
                <Button
                   as={'a'}
@@ -51,10 +51,10 @@ export default function AppBar() {
                   fontSize={'sm'}
                   fontWeight={600}
                   color={'white'}
-                  bg={'pink.400'}
+                  bg={'cyan.600'}
                   href={'#'}
                   _hover={{
-                     bg: 'pink.300',
+                     bg: 'cyan.400',
                   }}
                >
                   Login

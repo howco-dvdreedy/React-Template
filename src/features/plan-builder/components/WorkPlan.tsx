@@ -2,7 +2,21 @@ import { SortableItem } from '@/features/drag-and-drop/sortableItem';
 import { WorkItem } from './WorkItem';
 
 import { SortableContext, rectSortingStrategy } from '@dnd-kit/sortable';
-import { Grid, List } from '@chakra-ui/react';
+import {
+   Card,
+   CardBody,
+   CardFooter,
+   CardHeader,
+   Grid,
+   Text,
+   Flex,
+   Button,
+   Spacer,
+   Divider,
+   Stat,
+   StatHelpText,
+   StatNumber,
+} from '@chakra-ui/react';
 import { useDroppable } from '@dnd-kit/core';
 
 type WorkPlanProps = {
@@ -14,13 +28,30 @@ export const WorkPlan = ({ resources }: WorkPlanProps) => {
 
    return (
       <SortableContext items={resources} strategy={rectSortingStrategy}>
-         <Grid templateColumns="repeat(6, 1fr)" gap={5} ref={setNodeRef}>
-            {resources.map((resource) => (
-               <SortableItem key={resource} id={resource}>
-                  <WorkItem resource={resource} />
-               </SortableItem>
-            ))}
-         </Grid>
+         <Card ref={setNodeRef}>
+            <CardHeader >
+               <Flex>
+                  <Stat>
+                     <StatNumber>Work Plan</StatNumber>
+                     <StatHelpText>(Click a resource to Open Editor)</StatHelpText>
+                  </Stat>
+                  <Spacer />
+                  <Button>Send to Shop</Button>
+               </Flex>
+            </CardHeader>
+            <Divider />
+            <CardBody backgroundColor={'gray'}>
+               <Grid templateColumns="repeat(6, 1fr)" gap={5} >
+                  {resources.map((resource) => (
+                     <SortableItem key={resource} id={resource}>
+                        <WorkItem resource={resource} />
+                     </SortableItem>
+                  ))}
+               </Grid>
+            </CardBody>
+            <Divider />
+            <CardFooter></CardFooter>
+         </Card>
       </SortableContext>
    );
 };

@@ -12,12 +12,11 @@ export default function Draggable({ children, id }: DraggableProps) {
    });
    const style = {
       color: 'white',
-      border: '1px dashed pink',
    };
 
    return (
-      <li ref={setNodeRef} style={style} {...listeners} {...attributes}>
+      <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
          {children}
-      </li>
+      </div>
    );
 }

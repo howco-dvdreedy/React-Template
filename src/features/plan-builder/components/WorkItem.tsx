@@ -9,18 +9,19 @@ import {
    StatNumber,
    Badge,
    Center,
+   Text
 } from '@chakra-ui/react';
 
 type WorkItemProps = {
    resource: string;
 };
 
-export const WorkItem = ({ resource }: WorkItemProps) => {
+export const WorkItem = ({ resource}: WorkItemProps) => {
    return (
       <Card>
          <CardHeader>
             <Center>
-               <Heading size="sm"> Process</Heading>
+               <Heading size="sm"><Text> Process</Text></Heading>
             </Center>
          </CardHeader>
          <CardBody>

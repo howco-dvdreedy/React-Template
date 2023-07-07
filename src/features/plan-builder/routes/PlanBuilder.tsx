@@ -10,6 +10,7 @@ import {
    DragEndEvent,
    DragOverlay,
    closestCenter,
+   rectIntersection,
    DragStartEvent,
    DragOverEvent,
 } from '@dnd-kit/core';
@@ -47,7 +48,6 @@ export default function PlanBuilder() {
    };
 
    const handleDragOver = ({ active, over }: DragOverEvent) => {
-      console.log(active, over);
       if (!over) {
          // if (activeItemOrigin === null) return;
          const indx = resources.findIndex((x) => x === active.id);
@@ -59,7 +59,7 @@ export default function PlanBuilder() {
       const active_indx = resources.findIndex((x) => x === active.id);
       const over_indx = resources.findIndex((x) => x === over.id);
 
-      console.log(active_indx, over_indx);
+      console.log(active_indx, over_indx, active, over);
 
       if (active_indx !== -1 && over_indx !== -1) {
          if (active_indx === over_indx) return;
@@ -67,7 +67,7 @@ export default function PlanBuilder() {
       } else if (over.id === 'work-plan') {
          if (resources.findIndex((x) => x === active.id) === -1) {
             setResources([...resources, active.id.toString()]);
-            console.log(resources);
+            console.log(resources, 'moved');
             // if (palletteItems.findIndex((x) => x.id === active.id) === -1) {
             // console.log(active_indx, over_indx, "favorite");
             //   if (active.id === favoriteId) {
@@ -99,10 +99,10 @@ export default function PlanBuilder() {
 
    dispatch(setTitle('Plan Builder POC'));
    return (
-      <Flex w="100%">
+      <Flex h='90%'>
          <DndContext
             onDragCancel={handleDragCancel}
-            collisionDetection={closestCenter}
+            collisionDetection={rectIntersection}
             onDragEnd={handleDragEnd}
             onDragStart={handleDragStart}
             onDragOver={handleDragOver}

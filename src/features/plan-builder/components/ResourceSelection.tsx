@@ -35,7 +35,7 @@ export const ResouceSelection = () => {
       <Box backgroundColor="white" border="1px solid black" p={4}>
          <Grid templateColumns="repeat(2, 1fr)" gap={5}>
             {resources.map((resource) => (
-               <Draggable id={resource}>
+               <Draggable key={resource} id={resource}>
                   <Badge as="button" m={1} w={150} h={30} colorScheme="cyan" variant="solid">
                      <Center h="100%">{resource}</Center>
                   </Badge>

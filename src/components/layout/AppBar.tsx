@@ -25,11 +25,9 @@ import {
 export default function AppBar() {
    const title = useAppSelector(selectTitle);
    return (
-      <Box>
-         <Flex
+         <Flex h='100%'
             bg={useColorModeValue('white', 'gray.800')}
             color={useColorModeValue('gray.600', 'white')}
-            h={'75px'}
             py={{ base: 2 }}
             px={{ base: 4 }}
             borderBottom={1}
@@ -61,6 +59,5 @@ export default function AppBar() {
                </Button>
             </Stack>
          </Flex>
-      </Box>
    );
 }

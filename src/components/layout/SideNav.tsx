@@ -32,16 +32,11 @@ const LinkItems: Array<LinkItemProps> = [
    { name: 'Work Center', to: '/work-center', icon: LuHardHat },
 ];
 
-export default function SideNav({ children }: { children: ReactNode }) {
+export default function SideNav() {
    const { onClose } = useDisclosure();
    return (
       <Box h="100%" bg={useColorModeValue('gray.100', 'gray.900')}>
-         <Flex>
-            <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
-            <Box backgroundColor={'cyan.100'} w="100%">
-               {children}
-            </Box>
-         </Flex>
+         <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
       </Box>
    );
 }
@@ -56,7 +51,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
          bg={useColorModeValue('white', 'gray.900')}
          borderRight="1px"
          borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-         w="10%"
          pos="relative"
          h="full"
          {...rest}

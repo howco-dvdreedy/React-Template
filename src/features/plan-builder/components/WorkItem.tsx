@@ -9,25 +9,29 @@ import {
    StatNumber,
    Badge,
    Center,
-   Text
+   Text,
+   Divider,
 } from '@chakra-ui/react';
 
 type WorkItemProps = {
    resource: string;
 };
 
-export const WorkItem = ({ resource}: WorkItemProps) => {
+export const WorkItem = ({ resource }: WorkItemProps) => {
    return (
-      <Card>
+      <Card h="250px" w="200px">
          <CardHeader>
             <Center>
-               <Heading size="sm"><Text> Process</Text></Heading>
+               <Heading size="sm">
+                  <Text> Process</Text>
+               </Heading>
             </Center>
          </CardHeader>
+         <Divider />
          <CardBody>
             <Center>
-               <Badge colorScheme="cyan" variant="solid">
-                  {resource}
+               <Badge p={0} w={150} h={30} colorScheme="cyan" variant="solid">
+                  <Center h="100%">{resource}</Center>
                </Badge>
             </Center>
          </CardBody>

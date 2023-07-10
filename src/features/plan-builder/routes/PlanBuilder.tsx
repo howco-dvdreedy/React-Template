@@ -14,12 +14,10 @@ import {
    DragStartEvent,
    DragOverEvent,
 } from '@dnd-kit/core';
-import { arrayMove, SortableContext, horizontalListSortingStrategy } from '@dnd-kit/sortable';
-import { Flex, List } from '@chakra-ui/react';
+import { arrayMove } from '@dnd-kit/sortable';
+import { Flex, List, Box, Container, Center, Grid, GridItem } from '@chakra-ui/react';
 import { useState } from 'react';
-import { useDroppable } from '@dnd-kit/core';
-
-import { Droppable } from '@/features/drag-and-drop/droppable';
+import { restrictToWindowEdges } from '@dnd-kit/modifiers';
 
 export default function PlanBuilder() {
    // to do refactor simple string implementation to object with id
@@ -99,18 +97,31 @@ export default function PlanBuilder() {
 
    dispatch(setTitle('Plan Builder POC'));
    return (
-      <Flex h='90%'>
-         <DndContext
-            onDragCancel={handleDragCancel}
-            collisionDetection={rectIntersection}
-            onDragEnd={handleDragEnd}
-            onDragStart={handleDragStart}
-            onDragOver={handleDragOver}
+      <DndContext
+         onDragCancel={handleDragCancel}
+         collisionDetection={rectIntersection}
+         onDragEnd={handleDragEnd}
+         onDragStart={handleDragStart}
+         onDragOver={handleDragOver}
+      >
+         <Grid
+            templateAreas={`"resource workplan"`}
+            gridTemplateColumns={'400px 1fr'}
+            gridTemplateRows={'1fr'}
+            w={'100%'}
+            h={'100%'}
          >
-            <ResouceSelection />
-            <WorkPlan resources={resources}></WorkPlan>
-            <DragOverlay>{activeItem ? <WorkItem resource={activeItem} /> : null}</DragOverlay>
-         </DndContext>
-      </Flex>
+            <GridItem area='resource'>
+               <ResouceSelection />
+            </GridItem>
+            <GridItem area='workplan'>
+               <WorkPlan resources={resources}></WorkPlan>
+            </GridItem>
+         </Grid>
+
+         <DragOverlay modifiers={[restrictToWindowEdges]}>
+            {activeItem ? <WorkItem resource={activeItem} /> : null}
+         </DragOverlay>
+      </DndContext>
    );
 }

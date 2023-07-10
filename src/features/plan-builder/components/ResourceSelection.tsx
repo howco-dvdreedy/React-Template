@@ -46,7 +46,7 @@ export const ResouceSelection = () => {
    ];
 
    return (
-      <Card backgroundColor="white" border="1px solid black" p={4}>
+      <Card backgroundColor="white" border="1px solid black" p={4} m={1}>
          <CardHeader>
             <Stat>
                <StatNumber>Resource Selection</StatNumber>

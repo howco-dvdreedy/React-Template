@@ -28,7 +28,7 @@ export const WorkPlan = ({ resources }: WorkPlanProps) => {
 
    return (
       <SortableContext items={resources} strategy={rectSortingStrategy}>
-         <Card ref={setNodeRef}>
+         <Card h='60%' m={1}  ref={setNodeRef}>
             <CardHeader >
                <Flex>
                   <Stat>

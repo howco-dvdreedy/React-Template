@@ -15,15 +15,16 @@ import {
 
 type WorkItemProps = {
    resource: string;
+   index?: number;
 };
 
-export const WorkItem = ({ resource }: WorkItemProps) => {
+export const WorkItem = ({ resource, index }: WorkItemProps) => {
    return (
       <Card h="250px" w="200px">
          <CardHeader>
             <Center>
                <Heading size="sm">
-                  <Text> Process</Text>
+                  {<Text> Process {index !== undefined && index >=0 && (index + 1)}</Text>}
                </Heading>
             </Center>
          </CardHeader>

@@ -17,7 +17,7 @@ import {
 import { arrayMove } from '@dnd-kit/sortable';
 import { Flex, List, Box, Container, Center, Grid, GridItem } from '@chakra-ui/react';
 import { useState } from 'react';
-import { restrictToWindowEdges } from '@dnd-kit/modifiers';
+import { restrictToWindowEdges, snapCenterToCursor } from '@dnd-kit/modifiers';
 
 export default function PlanBuilder() {
    // to do refactor simple string implementation to object with id
@@ -46,26 +46,28 @@ export default function PlanBuilder() {
    };
 
    const handleDragOver = ({ active, over }: DragOverEvent) => {
+    console.log(active, over)
       if (!over) {
          // if (activeItemOrigin === null) return;
          const indx = resources.findIndex((x) => x === active.id);
+         console.log(indx, resources)
          if (indx === -1) return;
          // if added to the list but not actually dropped
+         console.log('removed')
          setResources(resources.filter((x) => x !== active.id));
          return;
       }
       const active_indx = resources.findIndex((x) => x === active.id);
       const over_indx = resources.findIndex((x) => x === over.id);
 
-      console.log(active_indx, over_indx, active, over);
-
       if (active_indx !== -1 && over_indx !== -1) {
          if (active_indx === over_indx) return;
+         console.log('moved')
          setResources(arrayMove(resources, active_indx, over_indx));
       } else if (over.id === 'work-plan') {
          if (resources.findIndex((x) => x === active.id) === -1) {
+            console.log('moved')
             setResources([...resources, active.id.toString()]);
-            console.log(resources, 'moved');
             // if (palletteItems.findIndex((x) => x.id === active.id) === -1) {
             // console.log(active_indx, over_indx, "favorite");
             //   if (active.id === favoriteId) {
@@ -103,6 +105,7 @@ export default function PlanBuilder() {
          onDragEnd={handleDragEnd}
          onDragStart={handleDragStart}
          onDragOver={handleDragOver}
+
       >
          <Grid
             templateAreas={`"resource workplan"`}
@@ -119,7 +122,7 @@ export default function PlanBuilder() {
             </GridItem>
          </Grid>
 
-         <DragOverlay modifiers={[restrictToWindowEdges]}>
+         <DragOverlay modifiers={[restrictToWindowEdges, snapCenterToCursor]}>
             {activeItem ? <WorkItem resource={activeItem} /> : null}
          </DragOverlay>
       </DndContext>

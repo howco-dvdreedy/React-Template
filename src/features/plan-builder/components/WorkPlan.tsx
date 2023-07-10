@@ -28,7 +28,7 @@ export const WorkPlan = ({ resources }: WorkPlanProps) => {
 
    return (
       <SortableContext items={resources} strategy={rectSortingStrategy}>
-         <Card h='60%' m={1}  ref={setNodeRef}>
+         <Card h='75%' m={1}  ref={setNodeRef}>
             <CardHeader >
                <Flex>
                   <Stat>
@@ -42,9 +42,9 @@ export const WorkPlan = ({ resources }: WorkPlanProps) => {
             <Divider />
             <CardBody backgroundColor={'gray'}>
                <Grid templateColumns="repeat(6, 1fr)" gap={5} >
-                  {resources.map((resource) => (
+                  {resources.map((resource, index) => (
                      <SortableItem key={resource} id={resource}>
-                        <WorkItem resource={resource} />
+                        <WorkItem index={index} resource={resource} />
                      </SortableItem>
                   ))}
                </Grid>

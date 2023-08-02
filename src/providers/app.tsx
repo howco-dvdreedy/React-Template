@@ -40,7 +40,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                   {/* {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
             <Notifications />
             <AuthProvider> */}
-                  <Router>{children}</Router>
+                  <Router basename={import.meta.env.DEV ? '/' : '/react-vite-gh-pages/'}>{children}</Router>
                   {/* </AuthProvider> */}
                   {/* </QueryClientProvider> */}
                   {/* </HelmetProvider> */}

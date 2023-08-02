@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ChakraProvider, Spinner } from '@chakra-ui/react';
 import { Provider } from 'react-redux';
 

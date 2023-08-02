@@ -1,16 +1,10 @@
 import * as React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-// import { HelmetProvider } from 'react-helmet-async';
-// import { QueryClientProvider } from 'react-query';
-// import { ReactQueryDevtools } from 'react-query/devtools';
-import { BrowserRouter as Router } from 'react-router-dom';
+
+import { HashRouter as Router } from 'react-router-dom';
 import { ChakraProvider, Spinner } from '@chakra-ui/react';
 import { Provider } from 'react-redux';
 
-// import { Button, Spinner } from '@/components/Elements';
-// import { Notifications } from '@/components/Notifications/Notifications';
-// import { AuthProvider } from '@/lib/auth';
-// import { queryClient } from '@/lib/react-query';
 
 import { store } from '@/stores/store';
 
@@ -21,9 +15,6 @@ const ErrorFallback = () => {
          role="alert"
       >
          <h2 className="text-lg font-semibold">Ooops, something went wrong :( </h2>
-         {/* <Button className="mt-4" onClick={() => window.location.assign(window.location.origin)}>
-        Refresh
-      </Button> */}
       </div>
    );
 };

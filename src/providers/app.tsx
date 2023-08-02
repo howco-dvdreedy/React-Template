@@ -40,7 +40,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                   {/* {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
             <Notifications />
             <AuthProvider> */}
-                  <Router basename={import.meta.env.DEV ? '/' : '/React-Template/'}>{children}</Router>
+                  <Router basename={import.meta.env.DEV ? '/' : '/react-template/'}>{children}</Router>
                   {/* </AuthProvider> */}
                   {/* </QueryClientProvider> */}
                   {/* </HelmetProvider> */}

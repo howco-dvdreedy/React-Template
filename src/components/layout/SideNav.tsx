@@ -19,11 +19,11 @@ interface LinkItemProps {
    icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-   { name: 'Home', to: '/', icon: FiHome },
-   { name: 'Sales Orders', to: '/sales-orders', icon: FiBookOpen },
-   { name: 'Shop Plan Builder', to: '/plan-builder', icon: FiLayout },
-   { name: 'Scheduler', to: '/scheduler', icon: FiCalendar },
-   { name: 'Work Center', to: '/work-center', icon: LuHardHat },
+   { name: 'Home', to: '/react-template/', icon: FiHome },
+   { name: 'Sales Orders', to: '/react-template/sales-orders', icon: FiBookOpen },
+   { name: 'Shop Plan Builder', to: '/react-template/plan-builder', icon: FiLayout },
+   { name: 'Scheduler', to: '/react-template/scheduler', icon: FiCalendar },
+   { name: 'Work Center', to: '/react-template/work-center', icon: LuHardHat },
 ];
 
 export default function SideNav() {

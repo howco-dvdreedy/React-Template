@@ -1,7 +1,6 @@
 import { useAppDispatch } from '@/hooks/hooks';
 import { setTitle } from '@/stores/slices/titleSlice';
 import { ResouceSelection } from '../components/ResourceSelection';
-import { SortableItem } from '@/features/drag-and-drop/sortableItem';
 import { WorkItem } from '../components/WorkItem';
 import { WorkPlan } from '../components/WorkPlan';
 
@@ -9,13 +8,12 @@ import {
    DndContext,
    DragEndEvent,
    DragOverlay,
-   closestCenter,
    rectIntersection,
    DragStartEvent,
    DragOverEvent,
 } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
-import { Flex, List, Box, Container, Center, Grid, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem } from '@chakra-ui/react';
 import { useState } from 'react';
 import { restrictToWindowEdges, snapCenterToCursor } from '@dnd-kit/modifiers';
 
@@ -25,7 +23,7 @@ export default function PlanBuilder() {
    const [resources, setResources] = useState<string[]>(['saw', 'bore', 'drift']);
    const [activeItem, setActiveItem] = useState<string | null>(null);
 
-   const handleDragEnd = ({ active, over }: DragEndEvent) => {
+   const handleDragEnd = ({  over }: DragEndEvent) => {
       if (!over) {
          setActiveItem(null);
          //  setActiveItemOrigin(null);
@@ -46,14 +44,11 @@ export default function PlanBuilder() {
    };
 
    const handleDragOver = ({ active, over }: DragOverEvent) => {
-    console.log(active, over)
       if (!over) {
          // if (activeItemOrigin === null) return;
          const indx = resources.findIndex((x) => x === active.id);
-         console.log(indx, resources)
          if (indx === -1) return;
          // if added to the list but not actually dropped
-         console.log('removed')
          setResources(resources.filter((x) => x !== active.id));
          return;
       }
@@ -62,14 +57,11 @@ export default function PlanBuilder() {
 
       if (active_indx !== -1 && over_indx !== -1) {
          if (active_indx === over_indx) return;
-         console.log('moved')
          setResources(arrayMove(resources, active_indx, over_indx));
       } else if (over.id === 'work-plan') {
          if (resources.findIndex((x) => x === active.id) === -1) {
-            console.log('moved')
             setResources([...resources, active.id.toString()]);
             // if (palletteItems.findIndex((x) => x.id === active.id) === -1) {
-            // console.log(active_indx, over_indx, "favorite");
             //   if (active.id === favoriteId) {
             //     setPalletteItems([
             //       ...palletteItems,
@@ -77,7 +69,6 @@ export default function PlanBuilder() {
             //     ]);
             //     setFavoriteId(id_gen);
             //   } else if (active.id === pickerId) {
-            //           console.log(active_indx, over_indx, "picker");
             //     setPalletteItems([
             //       ...palletteItems,
             //       { id: pickerId, color: pickerColor },

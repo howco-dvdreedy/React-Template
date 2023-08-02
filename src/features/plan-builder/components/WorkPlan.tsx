@@ -8,7 +8,6 @@ import {
    CardFooter,
    CardHeader,
    Grid,
-   Text,
    Flex,
    Button,
    Spacer,

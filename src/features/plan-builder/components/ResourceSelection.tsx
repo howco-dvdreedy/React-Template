@@ -1,13 +1,8 @@
 import Draggable from '@/features/drag-and-drop/draggable';
 import {
-   Box,
    Badge,
-   Flex,
-   VStack,
    Center,
-   UnorderedList,
    Grid,
-   Button,
    Card,
    CardHeader,
    StatHelpText,

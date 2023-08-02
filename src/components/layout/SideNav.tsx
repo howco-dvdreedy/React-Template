@@ -1,18 +1,12 @@
-import { ReactNode } from 'react';
 import {
    Box,
-   CloseButton,
-   Flex,
    Icon,
    useColorModeValue,
    Link,
-   Drawer,
-   DrawerContent,
    Text,
    useDisclosure,
    BoxProps,
    FlexProps,
-   Center,
 } from '@chakra-ui/react';
 
 import { FiHome, FiCalendar, FiBookOpen, FiLayout } from 'react-icons/fi';

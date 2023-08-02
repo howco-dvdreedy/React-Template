@@ -3,21 +3,12 @@ import logo from '@/assets/HowcoLogoWithText.png';
 import { selectTitle } from '@/stores/slices/titleSlice';
 
 import {
-   Box,
-   Flex,
    Text,
-   IconButton,
    Button,
    Stack,
    Image,
-   Icon,
-   Link,
-   Popover,
-   PopoverTrigger,
-   PopoverContent,
+   Flex,
    useColorModeValue,
-   useBreakpointValue,
-   useDisclosure,
    Center,
 } from '@chakra-ui/react';
 
